@@ -96,7 +96,7 @@
     },
     "customData": {
       "type": "string",
-      "defaultValue": "",
+      "defaultValue": "IyEvYmluL2Jhc2gKCiMgUmVjb25maWd1cmUgdGhlIFNTSCBzZXJ2aWNlIHRvIGxpc3RlbiBvbiBwb3J0IDIyMjIuCgpzZWQgLUVpICdzL14jPyhbWzpzcGFjZTpdXT8pK1BvcnQoW1s6c3BhY2U6XV0/MjIoW1s6c3BhY2U6XV0/KSspKyQvUG9ydCAyMjIyICMgTW9kaWZpZWQgYnkgYXV0b21hdGlvbi4vJyAvZXRjL3NzaC9zc2hkX2NvbmZpZwpzeXN0ZW1jdGwgcmVsb2FkIHNzaGQK",
       "metadata": {
         "description": "base64 content for cloud-init custom data"
       }

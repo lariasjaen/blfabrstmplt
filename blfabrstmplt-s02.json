@@ -102,7 +102,7 @@
       }
     },
     "storageAccounts_aztrial_name": {
-      "defaultValue": "storage${uniqueString(resourceGroup().id)}",
+      "defaultValue": "[concat('stor', uniqueString(resourceGroup().id))]",
       "type": "String"
     }
   },

@@ -42,7 +42,7 @@
     },
     "dnsLabelPrefix": {
       "type": "string",
-      "defaultValue": "[toLower(format(parameters('vmName'), uniqueString(resourceGroup().id)))]",
+      "defaultValue": "[concat(parameters('vmName'), uniqueString(resourceGroup().id))]",
       "metadata": {
         "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
       }

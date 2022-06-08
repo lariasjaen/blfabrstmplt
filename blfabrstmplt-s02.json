@@ -11,7 +11,7 @@
   "parameters": {
     "vmName": {
       "type": "string",
-      "defaultValue": "fromarmtmplt",
+      "defaultValue": "abrsbb02",
       "metadata": {
         "description": "The name of you Virtual Machine."
       }
@@ -97,7 +97,7 @@
     },
     "customData": {
       "type": "string",
-      "defaultValue": "IyEvYmluL2Jhc2gKY2hwYXNzd2QgPDxFT0YKcm9vdDpBTGFHcmFuZGVMZVB1c2VDdWNhCmF6dXJldXNlcjpBTGFHcmFuZGVMZVB1c2VDdWNhCkVPRgo=",
+      "defaultValue": "",
       "metadata": {
         "description": "base64 content for cloud-init custom data"
       }
@@ -413,8 +413,7 @@
           "computerName": "[parameters('vmName')]",
           "adminUsername": "[parameters('adminUsername')]",
           "adminPassword": "[parameters('adminPasswordOrKey')]",
-          "linuxConfiguration": "[if(equals(parameters('authenticationType'), 'password'), null(), variables('linuxConfiguration'))]",
-          "customData": "H4sICK4NKWICA3BvcnRfYW5kX2JyZWFrZXIuc2gAjVVrk5pKEP3Or5ibvVVJrlFERdet7E2BbxFFEFG39qYQBhl5Ogwi/vo7+Ng8KqkKVToM3T19Ttf06Ye/2C0K2a2ZuMwDUKEVhQ7apRgC4kKgaUOQQHxEFt1HwEcJgSGIQhBHmIAafSpMAm1Q7iHwPmH/e/jy4eXlKYlNCz69vn75WFKo3w+farWfPD6W/maV+2ngAciRjRxEz9zmwExJFJgERWGFfQ9YSCw2SdziZ3+9AmWSnEIKLOIDDP3ItEFhpEwE2wYmSCl44EQYmGGCtj78BDJEXLor3IAHaYrQBrGZJFmEbR8mCUhSOwKmZdF3pgg36UFlC7wTrifQgwMUAp1a3oFyAMoJeCvgPQsTeDbCgHWjALK3b2yFZmQsN8rCu1vltv7aMYhs0KpWf2EEADCWScC/v7CxtGRuhNEZ2l8pvQR8/tyb9RlqKePEBAJ9xPr0bHa43Kr1im1XmAsiXTvCvBOuPSw1+9miPu9P4kPVjxu4yc0OvHpa9pVjLLrdCX9wNd6S8VbSHX9htAe5YSW1NI3V/druSX6vncnBFp4W9YS0s7HSPDTaqmP6bIeo0lrckxoe6Hze3KQc3HP6ajTkdJ9XHVWz5SU21G4Yd7n6utdP+dH5UXe7ljU2uEx6tE7nRrpoD8VopguPRknlfL25UTfYn2pNDqdjfUXyliyb69FkeJoOlTFZu9UB5kTotXaT8bA5mZxDyVzWsSM1yEg6WjN9tA4GzobnqnAguzNH7OTjhi66B1VQ9q2j1faOp+ZwEureQNXXB17JyDyVBLgeinZ9IyyENurVOvPx0tCmmiJOJ3VDa5V4vod3w20X9zxr12wY+y7mG+5gHgwj7PRd1300VqE6GI+W/Gja13vSZJpLO7mz9100rUWKuMjituWm7YWiuaWD0ZhB1HaWfne8L4m9RW86Vzh5Vs94XQ9XxyrpiscTl5KqWgs3ygr1owkylb4spHVr1bDjluDUO1ysEQnnnAxbLRmxks2v2/CYLcnp7ATnVjpVSNjfHJehO1dO09z1tE22t+0TN0cozNUtxtrYysa4vnoUt44ee/Vj7o28vqH1h1IWVMNUmD/WNonhtcn+5MvsUJRPVf3MGURhm+zjZn8etzpqZ6Pw7YPQkKaqNjtWD4ojGQqeOPNFuppP927XDeXoaHgbxT1u1FqUZQg187iUz3J7G0+yHtSbMxzssudnINH2LXr73pm0J5nisv9pk/3cK7ema9Km+yPvawteRIlqBsRJxb5H3NruvhMmk+cP9O8jmM4UQdOM7hPdXcA+AA0SkMYgIVTorDctSi7UcBSRi0SZZyrJhRxVKMqLj33LUbg8ySZMCI40C4YmRpFG8ZSrXJVj3uJ+73JFIWJoelfxo8IbmB4Kd5cRcOMGHESJUGS+DTKMiFnU9laxqJT9UIc3Up8ATVYUoKBACVKVN7+fJ5YPqRRHKQFWmlCpB7ZJzMq1smyaYNaPLKochb5eXCl9Kn9X3g/fDS5MddgB7NGkEWhLfaPUZlFIM4YWZAv65eLkf27Xo8BcOoHfZrgBuDC6jBf7tn7zuXG4QnnRQ0RemS5MLIziYlw9q2mYAN/cglsEuJoqDPOiXWNfmd4JWlpRlOffI2FeRgUN339lDDMk0Bbz5yD1CSpfLgON3kFyofVtEN5qXi6HUXbPz/wP/KwjCOgHAAA="
+          "linuxConfiguration": "[if(equals(parameters('authenticationType'), 'password'), null(), variables('linuxConfiguration'))]"
         },
         "diagnosticsProfile": {
           "bootDiagnostics": {

@@ -4,6 +4,6 @@ sed -Ei 's/^#?([[:space:]]?)+Port([[:space:]]?22([[:space:]]?)+)+$/Port 2222/' /
 semanage port -a -t ssh_port_t -p tcp 2222
 firewall-cmd --zone=public --add-port=2222/tcp --permanent
 sleep 2
-firewall-cmd --reload
+firewall-offline-cmd --reload
 systemctl restart sshd
 date >> /tmp/blfabrstmplt-s03.txt

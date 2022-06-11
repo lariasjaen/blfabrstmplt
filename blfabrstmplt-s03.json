@@ -47,13 +47,13 @@
                 "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
             }
         },
-        "customData": {
-            "type": "string",
-            "defaultValue": "IyEvYmluL2Jhc2gKZGF0ZSA+IC90bXAvYmxmYWJyc3RtcGx0LXMwMy50eHQKZWNobyBDaGFuZ2Ugc3NoZCBwb3J0IGNvbmZpZ3VyYXRpb24gPj4gL3RtcC9ibGZhYnJzdG1wbHQtczAzLnR4dApzZWQgLUVpICdzL14jPyhbWzpzcGFjZTpdXT8pK1BvcnQoW1s6c3BhY2U6XV0/MjIoW1s6c3BhY2U6XV0/KSspKyQvUG9ydCAyMjIyICMgTW9kaWZpZWQgYnkgYXV0b21hdGlvbi8nIC9ldGMvc3NoL3NzaGRfY29uZmlnIDI+JjEgPj4gIC90bXAvYmxmYWJyc3RtcGx0LXMwMy50eHQKCmVjaG8gQWRkIFRDUCBwb3J0IDIyMjIgdG8gU0VMaW51eCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CnNlbWFuYWdlIHBvcnQgLWEgLXQgc3NoX3BvcnRfdCAtcCB0Y3AgMjIyMiA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CgplY2hvIEFkZCBmaXJld2FsbCBzc2ggcG9ydCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CnN5c3RlbWN0bCBzdG9wIGZpcmV3YWxsZCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CmZpcmV3YWxsLW9mZmxpbmUtY21kIC0tYWRkLXBvcnQ9MjIyMi90Y3AgLS1wZXJtYW5lbnQgPj4gL3RtcC9ibGZhYnJzdG1wbHQtczAzLnR4dApzeXN0ZW1jdGwgc3RhcnQgZmlyZXdhbGxkID4+IC90bXAvYmxmYWJyc3RtcGx0LXMwMy50eHQKCmVjaG8gUmVzdGFydCBzc2ggPj4gL3RtcC9ibGZhYnJzdG1wbHQtczAzLnR4dApzeXN0ZW1jdGwgcmVzdGFydCBzc2hkID4+IC90bXAvYmxmYWJyc3RtcGx0LXMwMy50eHQKCmRhdGUgPj4gL3RtcC9ibGZhYnJzdG1wbHQtczAzLnR4dA==",
-            "metadata": {
-                "description": "base64 content for cloud-init custom data"
-            }
-        },
+      "customData": {
+        "type": "string",
+        "defaultValue": "IyEvYmluL2Jhc2gKZGF0ZSA+IC90bXAvYmxmYWJyc3RtcGx0LXMwMy50eHQKZWNobyBDaGFuZ2Ugc3NoZCBwb3J0IGNvbmZpZ3VyYXRpb24gPj4gL3RtcC9ibGZhYnJzdG1wbHQtczAzLnR4dApzZWQgLUVpICdzL14jPyhbWzpzcGFjZTpdXT8pK1BvcnQoW1s6c3BhY2U6XV0/MjIoW1s6c3BhY2U6XV0/KSspKyQvUG9ydCAyMjIyICMgTW9kaWZpZWQgYnkgYXV0b21hdGlvbi8nIC9ldGMvc3NoL3NzaGRfY29uZmlnIDI+JjEgPj4gIC90bXAvYmxmYWJyc3RtcGx0LXMwMy50eHQKCmVjaG8gQWRkIFRDUCBwb3J0IDIyMjIgdG8gU0VMaW51eCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CnNlbWFuYWdlIHBvcnQgLWEgLXQgc3NoX3BvcnRfdCAtcCB0Y3AgMjIyMiA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CgplY2hvIEFkZCBmaXJld2FsbCBzc2ggcG9ydCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CnN5c3RlbWN0bCBzdG9wIGZpcmV3YWxsZCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CnNsZWVwIDUKZmlyZXdhbGwtb2ZmbGluZS1jbWQgLS1hZGQtcG9ydD0yMjIyL3RjcCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CnNsZWVwIDUKc3lzdGVtY3RsIHN0YXJ0IGZpcmV3YWxsZCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CgplY2hvIFJlc3RhcnQgc3NoID4+IC90bXAvYmxmYWJyc3RtcGx0LXMwMy50eHQKc3lzdGVtY3RsIHJlc3RhcnQgc3NoZCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CgpkYXRlID4+IC90bXAvYmxmYWJyc3RtcGx0LXMwMy50eHQ=",
+        "metadata": {
+          "description": "base64 content for cloud-init custom data"
+        }
+      },
         "vmSize": {
             "type": "string",
             "defaultValue": "Standard_B2s",
@@ -360,11 +360,11 @@
           "vmSize": "[parameters('vmSize')]"
         },
         "osProfile": {
-            "computerName": "[parameters('vmName')]",
-            "adminUsername": "[parameters('adminUsername')]",
-            "adminPassword": "[parameters('adminPasswordOrKey')]",
-            "customData": "[parameters('customData')]",
-            "linuxConfiguration": "[if(equals(parameters('authenticationType'), 'password'), json('null'), variables('linuxConfiguration'))]"
+          "adminPassword": "[parameters('adminPasswordOrKey')]",
+          "adminUsername": "[parameters('adminUsername')]",
+          "computerName": "[parameters('vmName')]",
+          "customData": "[parameters('customData')]",
+          "linuxConfiguration": "[if(equals(parameters('authenticationType'), 'password'), json('null'), variables('linuxConfiguration'))]"
         },
         "storageProfile": {
           "imageReference": {

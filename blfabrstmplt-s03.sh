@@ -8,7 +8,7 @@ semanage port -a -t ssh_port_t -p tcp 2222
 
 echo Add firewall ssh port >> /tmp/blfabrstmplt-s03.txt
 systemctl stop firewalld
-firewall-offline-cmd --zone=public --add-port=2222/tcp --permanent
+firewall-offline-cmd --add-port=2222/tcp --permanent
 
 echo Start firewall >> /tmp/blfabrstmplt-s03.txt
 systemctl start firewalld

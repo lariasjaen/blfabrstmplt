@@ -11,14 +11,14 @@
     },
     "vm1Name": {
       "type": "string",
-      "defaultValue": "abrsbb03vm1",
+      "defaultValue": "abrsbb04vm1",
       "metadata": {
         "description": "Name for the Virtual Machine."
       }
     },
     "vm2Name": {
       "type": "string",
-      "defaultValue": "abrsbb03vm2",
+      "defaultValue": "abrsbb04vm2",
       "metadata": {
         "description": "Name for the Virtual Machine."
       }
@@ -100,7 +100,7 @@
     "publicIPAddressNameVM1": "[concat(uniquestring(parameters('vm1Name')), 'publicip')]",
     "publicIPAddressNameVM2": "[concat(uniquestring(parameters('vm2Name')), 'publicip')]",
     "publicIPAddressType": "Dynamic",
-    "virtualNetworkName": "abrsbb03vnet",
+    "virtualNetworkName": "abrsbb04vnet",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
     "linuxConfiguration": {
       "disablePasswordAuthentication": true,

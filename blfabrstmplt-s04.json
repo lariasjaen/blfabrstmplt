@@ -23,6 +23,13 @@
         "description": "Name for the Virtual Machine."
       }
     },
+    "vm3Name": {
+      "type": "string",
+      "defaultValue": "abrsbb04vm3",
+      "metadata": {
+        "description": "Name for the Virtual Machine."
+      }
+    },
     "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
@@ -61,6 +68,13 @@
         "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
       }
     },
+    "dnsLabelPrefixVM3": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('vm3Name'), uniqueString(resourceGroup().id))]",
+      "metadata": {
+        "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+      }
+    },
     "customData": {
       "type": "string",
       "defaultValue": "IyEvYmluL2Jhc2gKZGF0ZSA+IC90bXAvYmxmYWJyc3RtcGx0LXMwMy50eHQKZWNobyBDaGFuZ2Ugc3NoZCBwb3J0IGNvbmZpZ3VyYXRpb24gPj4gL3RtcC9ibGZhYnJzdG1wbHQtczAzLnR4dApzZWQgLUVpICdzL14jPyhbWzpzcGFjZTpdXT8pK1BvcnQoW1s6c3BhY2U6XV0/MjIoW1s6c3BhY2U6XV0/KSspKyQvUG9ydCAyMjIyICMgTW9kaWZpZWQgYnkgYXV0b21hdGlvbi8nIC9ldGMvc3NoL3NzaGRfY29uZmlnIDI+JjEgPj4gIC90bXAvYmxmYWJyc3RtcGx0LXMwMy50eHQKCmVjaG8gQWRkIFRDUCBwb3J0IDIyMjIgdG8gU0VMaW51eCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CnNlbWFuYWdlIHBvcnQgLWEgLXQgc3NoX3BvcnRfdCAtcCB0Y3AgMjIyMiA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CgplY2hvIEFkZCBmaXJld2FsbCBzc2ggcG9ydCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CnN5c3RlbWN0bCBzdG9wIGZpcmV3YWxsZCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CnNsZWVwIDUKZmlyZXdhbGwtb2ZmbGluZS1jbWQgLS1hZGQtcG9ydD0yMjIyL3RjcCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CnNsZWVwIDUKc3lzdGVtY3RsIHN0YXJ0IGZpcmV3YWxsZCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CgplY2hvIFJlc3RhcnQgc3NoID4+IC90bXAvYmxmYWJyc3RtcGx0LXMwMy50eHQKc3lzdGVtY3RsIHJlc3RhcnQgc3NoZCA+PiAvdG1wL2JsZmFicnN0bXBsdC1zMDMudHh0CgpkYXRlID4+IC90bXAvYmxmYWJyc3RtcGx0LXMwMy50eHQ=",
@@ -89,16 +103,17 @@
     "dataDisk2NameVM1": "[concat(uniquestring(parameters('vm1Name')), 'datadisk2')]",
     "dataDisk1NameVM2": "[concat(uniquestring(parameters('vm2Name')), 'datadisk1')]",
     "dataDisk2NameVM2": "[concat(uniquestring(parameters('vm2Name')), 'datadisk2')]",
-    "imagePublisher": "RedHat",
-    "imageOffer": "RHEL",
-    "imageSku": "7_9",
+    "dataDisk1NameVM3": "[concat(uniquestring(parameters('vm3Name')), 'datadisk1')]",
+    "dataDisk2NameVM3": "[concat(uniquestring(parameters('vm3Name')), 'datadisk2')]",
     "nicNameVM1": "[concat(uniquestring(parameters('vm1Name')), 'nic')]",
     "nicNameVM2": "[concat(uniquestring(parameters('vm2Name')), 'nic')]",
+    "nicNameVM3": "[concat(uniquestring(parameters('vm3Name')), 'nic')]",
     "addressPrefix": "10.0.0.0/16",
     "subnetName": "Subnet",
     "subnetPrefix": "10.0.0.0/24",
     "publicIPAddressNameVM1": "[concat(uniquestring(parameters('vm1Name')), 'publicip')]",
     "publicIPAddressNameVM2": "[concat(uniquestring(parameters('vm2Name')), 'publicip')]",
+    "publicIPAddressNameVM3": "[concat(uniquestring(parameters('vm3Name')), 'publicip')]",
     "publicIPAddressType": "Dynamic",
     "virtualNetworkName": "abrsbb04vnet",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
@@ -136,6 +151,18 @@
       "properties": {
         "dnsSettings": {
           "domainNameLabel": "[parameters('dnsLabelPrefixVM2')]"
+        },
+        "publicIPAllocationMethod": "[variables('publicIPAddressType')]"
+      }
+    },
+    {
+      "apiVersion": "2020-05-01",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[variables('publicIPAddressNameVM3')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "dnsSettings": {
+          "domainNameLabel": "[parameters('dnsLabelPrefixVM3')]"
         },
         "publicIPAllocationMethod": "[variables('publicIPAddressType')]"
       }
@@ -439,6 +466,32 @@
       }
     },
     {
+      "apiVersion": "2020-05-01",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[variables('nicNameVM3')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressNameVM3'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressNameVM3'))]"
+              },
+              "subnet": {
+                "id": "[variables('subnetRef')]"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
       "apiVersion": "2020-06-01",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('vm1Name')]",
@@ -557,6 +610,65 @@
       }
     },
     {
+      "apiVersion": "2020-06-01",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('vm3Name')]",
+      "location": "[parameters('location')]",
+      "tags": {
+        "Tag1": "ManagedVM"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicNameVM3'))]"
+      ],
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "[parameters('vmSize')]"
+        },
+        "osProfile": {
+          "adminPassword": "[parameters('adminPasswordOrKey')]",
+          "adminUsername": "[parameters('adminUsername')]",
+          "computerName": "[parameters('vm3Name')]",
+          "customData": "[parameters('customData')]",
+          "linuxConfiguration": "[if(equals(parameters('authenticationType'), 'password'), json('null'), variables('linuxConfiguration'))]"
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', parameters('storageAccounts_aztrial_name'))).primaryEndpoints.blob]"
+          }
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "canonical",
+            "offer": "0001-com-ubuntu-server-focal",
+            "sku": "20_04-lts",
+            "version": "latest"
+          },
+          "dataDisks": [
+            {
+              "name": "[variables('dataDisk1NameVM3')]",
+              "diskSizeGB": 10,
+              "lun": 0,
+              "createOption": "Empty"
+            },
+            {
+              "name": "[variables('dataDisk2NameVM3')]",
+              "diskSizeGB": 15,
+              "lun": 1,
+              "createOption": "Empty"
+            }
+          ]
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicNameVM3'))]"
+            }
+          ]
+        }
+      }
+    },
+    {
       "name": "[parameters('storageAccounts_aztrial_name')]",
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2019-06-01",
@@ -580,8 +692,6 @@
         "tier": "Premium"
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Compute/virtualMachines/', parameters('vm1Name'))]",
-        "[resourceId('Microsoft.Compute/virtualMachines/', parameters('vm2Name'))]",
         "[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
       ],
       "kind": "FileStorage",
@@ -700,6 +810,10 @@
       "type": "string",
       "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressNameVM2'))).dnsSettings.fqdn]"
     },
+    "hostname VM3": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressNameVM3'))).dnsSettings.fqdn]"
+    },
     "sshCommand VM1": {
       "type": "string",
       "value": "[format('ssh {0}@{1} -p 2222', parameters('adminUsername'), reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressNameVM1'))).dnsSettings.fqdn)]"
@@ -707,6 +821,10 @@
     "sshCommand VM2": {
       "type": "string",
       "value": "[format('ssh {0}@{1} -p 2222', parameters('adminUsername'), reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressNameVM2'))).dnsSettings.fqdn)]"
+    },
+    "sshCommand VM3": {
+      "type": "string",
+      "value": "[format('ssh {0}@{1} -p 2222', parameters('adminUsername'), reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressNameVM3'))).dnsSettings.fqdn)]"
     }
   }
 }
